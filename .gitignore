@@ -29,3 +29,14 @@ Thumbs.db
 
 # Data
 ds1000_data/
+
+# Model files and checkpoints
+lora_finetuned_model/
+simple_finetuned_model/
+finetuned_model/
+rtx3090_finetuned_model/
+*.safetensors
+*.pt
+*.bin
+checkpoints/
+checkpoint-*/
