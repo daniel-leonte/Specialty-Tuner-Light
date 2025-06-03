@@ -1,10 +1,7 @@
 ---
-description: 
+description: Virtual Environment Activation for Python
 globs: *.py
 alwaysApply: false
----
----
-description: Virtual Environment Activation for Python
 ---
 # Python Virtual Environment Rule
 

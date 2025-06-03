@@ -1,10 +1,6 @@
 ---
-description: 
-globs: 
-alwaysApply: true
----
----
 description: Minimalist Coding Practices for Cursor Agent
+globs:
 alwaysApply: true
 ---
 # Minimalist Coding Practices
