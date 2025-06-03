@@ -1,0 +1,18 @@
+---
+description: 
+globs: *.py
+alwaysApply: false
+---
+---
+description: Virtual Environment Activation for Python
+---
+# Python Virtual Environment Rule
+
+Before running any Python script, always execute:
+
+1. **Activate virtual environment:** `venvup`
+
+Then run your Python script: `python script.py`
+
+# Additional Notes
+- Never run Python commands without running `venvup` first

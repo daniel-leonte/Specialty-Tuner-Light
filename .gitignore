@@ -25,4 +25,7 @@ build/
 Thumbs.db
 
 # Logs
-*.log 
+*.log
+
+# Data
+ds1000_data/

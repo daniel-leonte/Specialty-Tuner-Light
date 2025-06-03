@@ -1,0 +1,26 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+---
+description: Minimalist Coding Practices for Cursor Agent
+alwaysApply: true
+---
+# Minimalist Coding Practices
+
+Follow these guidelines to keep the codebase simple, clear, and easy to understand, inspired by the minimalist philosophy of tinygrad (e.g., George Hotz’s approach):
+
+1. **Generate minimal and concise code changes:** Always prioritize simplicity. Avoid unnecessary complexity or features that do not directly contribute to the task at hand.
+
+2. **Avoid emojis, excessive logging, and comments:** Do not use emojis in code or comments. Minimize logging and comments; include them only when absolutely necessary for clarity or debugging.
+
+3. **Support incremental development:** Focus on small, focused changes rather than large-scale or full-project modifications. This ensures easier review and integration.
+
+4. **Ensure readability and understandability:** Write code that is easy to read and understand. Use clear variable names, straightforward logic, and avoid overly complex structures.
+
+5. **Prioritize clarity and maintainability:** When there is a trade-off between brevity and clarity, always choose clarity. This facilitates efficient review and continued development.
+
+# Additional Notes
+- These rules are designed to align with minimalist coding principles, ensuring the codebase remains simple and maintainable.
+- The AI should always consider these guidelines when generating or modifying code.

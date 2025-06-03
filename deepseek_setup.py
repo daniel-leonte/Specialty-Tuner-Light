@@ -2,8 +2,8 @@ import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM
 
 class DeepSeekCoder:
-    def __init__(self, model_name="deepseek-ai/deepseek-coder-6.7b-instruct"):
-        self.device = "cuda" if torch.cuda.is_available() else "cpu"
+    def __init__(self, model_name="deepseek-ai/deepseek-coder-1.3b-instruct"):
+        self.device = "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu"
         self.tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
         self.model = AutoModelForCausalLM.from_pretrained(
             model_name, torch_dtype=torch.float16, device_map="auto", trust_remote_code=True
