@@ -13,13 +13,16 @@ import json
 import sys
 from pathlib import Path
 
+# Add parent directory to path to import from src
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+
 def test_imports():
     """Test that all required modules can be imported"""
     print("Testing imports...")
     try:
-        from deepseek_setup import DeepSeekCoder
-        from ds1000_processor import DS1000Processor, DS1000Evaluator
-        from evaluate_with_ds1000 import ModelEvaluator, get_device
+        from src.models import DeepSeekCoder
+        from src.dataset import DS1000Processor, DS1000Evaluator
+        from src.evaluation import ModelEvaluator, get_device
         import torch
         print("✓ All imports successful")
         return True
@@ -31,7 +34,7 @@ def test_device_detection():
     """Test device detection functionality"""
     print("Testing device detection...")
     try:
-        from evaluate_with_ds1000 import get_device, get_device_info
+        from src.evaluation import get_device, get_device_info
         device = get_device()
         info = get_device_info()
         print(f"✓ Device detected: {device}")
@@ -45,7 +48,7 @@ def test_dataset_processor():
     """Test dataset processing functionality"""
     print("Testing dataset processor...")
     try:
-        from ds1000_processor import DS1000Processor
+        from src.dataset import DS1000Processor
         
         processor = DS1000Processor()
         dataset = processor.download_dataset()
@@ -65,7 +68,7 @@ def test_model_setup():
     """Test model setup functionality"""
     print("Testing model setup...")
     try:
-        from deepseek_setup import DeepSeekCoder
+        from src.models import DeepSeekCoder
         
         coder = DeepSeekCoder()
         test_prompt = "def hello():"
@@ -83,7 +86,7 @@ def test_evaluation_pipeline():
     """Test the complete evaluation pipeline"""
     print("Testing evaluation pipeline...")
     try:
-        from evaluate_with_ds1000 import ModelEvaluator
+        from src.evaluation import ModelEvaluator
         
         evaluator = ModelEvaluator()
         metrics, results = evaluator.run_baseline_evaluation(max_samples=2)
@@ -102,11 +105,11 @@ def test_file_outputs():
     print("Testing file outputs...")
     
     expected_files = [
-        "ds1000_data/processed/ds1000_train.json",
-        "ds1000_data/processed/ds1000_validation.json", 
-        "ds1000_data/processed/ds1000_test.json",
-        "ds1000_data/processed/ds1000_finetuning.jsonl",
-        "ds1000_data/processed/evaluation_results.json"
+        "data/processed/ds1000_train.json",
+        "data/processed/ds1000_validation.json", 
+        "data/processed/ds1000_test.json",
+        "data/processed/ds1000_finetuning.jsonl",
+        "data/processed/evaluation_results.json"
     ]
     
     all_exist = True

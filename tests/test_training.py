@@ -1,8 +1,13 @@
 #!/usr/bin/env python3
 
 import os
+import sys
 import torch
-from finetune_ds1000 import DS1000FineTuner
+
+# Add parent directory to path to import from src
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+
+from src.training import DS1000FineTuner
 
 def test_finetuning_dry_run():
     """Test fine-tuning setup without actual training"""

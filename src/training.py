@@ -13,7 +13,7 @@ from transformers import (
     Trainer,
     DataCollatorForLanguageModeling
 )
-from ds1000_processor import DS1000Processor
+from .dataset import DS1000Processor
 
 class DS1000FineTuner:
     def __init__(self, model_name="deepseek-ai/deepseek-coder-1.3b-instruct", max_length=1024):
@@ -44,7 +44,7 @@ class DS1000FineTuner:
             return "mps"
         return "cpu"
     
-    def load_training_data(self, data_path="./ds1000_data/processed"):
+    def load_training_data(self, data_path="./data/processed"):
         """Load and prepare training data"""
         train_file = os.path.join(data_path, "ds1000_finetuning.jsonl")
         

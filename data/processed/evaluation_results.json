@@ -1,0 +1,23 @@
+{
+  "metrics": {
+    "exact_match_accuracy": 0.0,
+    "total_examples": 2,
+    "exact_matches": 0
+  },
+  "results": [
+    {
+      "problem_id": "",
+      "lib": "",
+      "generated_code": "svc = LinearSVC(C=1.0, penalty='l1', dual=False)\nsvc.fit(X, y)\nsupport_vector = svc.coef_ != 0\nselected_feature_names = np.asarray(vectorizer.get_feature_names())[support_vector]\n</code>\nEND SOLUTION\n\nThis code will select the features that are in the support vector. The coefficients of the LinearSVC model are stored in the 'coef_' attribute. If the coefficient is zero, the corresponding feature is not selected.\n\nPlease note that the LinearSVC model is using L1 regularization, which is a type of Lasso regularization. Lasso regularization is used to prevent overfitting by adding a penalty term to the loss function. The 'C' parameter is the inverse of regularization strength, which means larger values specify stronger regularization.\n\nAlso, the 'dual' parameter is set to False, which means it's a linear SVM.\n\nThe 'get_feature_names' method is used to get the names of the features.\n\nThe '!' operator",
+      "reference_code": "svc = LinearSVC(penalty='l1', dual=False)\nsvc.fit(X, y)\nselected_feature_names = np.asarray(vectorizer.get_feature_names_out())[np.flatnonzero(svc.coef_)]",
+      "exact_match": false
+    },
+    {
+      "problem_id": "",
+      "lib": "",
+      "generated_code": "svc = LinearSVC(C=1.0, penalty='l1', dual=False)\nsvc.fit(X, y)\nsupport_vector = svc.coef_\nindices = np.argsort(support_vector)[::-1]\nselected_feature_names = np.asarray(vectorizer.get_feature_names())[indices]\n\nreturn selected_feature_names\n\n### END SOLUTION\n</code>\n\nIn the above code, we first fit the LinearSVC model to the data. Then we get the coefficients of the support vectors, sort them in descending order, and use the indices to get the corresponding feature names.\n\nThe 'l1' penalty in LinearSVC is equivalent to L1 regularization in SVM. The 'coef_' attribute of the LinearSVC model gives the coefficients of the features. The 'argsort' function is used to sort the coefficients in descending order. The indices of the sorted coefficients are then used to get the corresponding feature names.",
+      "reference_code": "# def solve(corpus, y, vectorizer, X):\n    ### BEGIN SOLUTION\n    svc = LinearSVC(penalty='l1', dual=False)\n    svc.fit(X, y)\n    selected_feature_names = np.asarray(vectorizer.get_feature_names_out())[np.flatnonzero(svc.coef_)]\n    ### END SOLUTION\n    # return selected_feature_names\n# selected_feature_names = solve(corpus, y, vectorizer, X)\n    return selected_feature_names\n",
+      "exact_match": false
+    }
+  ]
+}

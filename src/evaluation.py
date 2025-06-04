@@ -1,8 +1,8 @@
 import torch
 import json
 import argparse
-from deepseek_setup import DeepSeekCoder
-from ds1000_processor import DS1000Processor, DS1000Evaluator
+from .models import DeepSeekCoder
+from .dataset import DS1000Processor, DS1000Evaluator
 
 def get_device():
     """Get available device"""

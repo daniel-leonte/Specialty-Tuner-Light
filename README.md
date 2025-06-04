@@ -4,10 +4,10 @@ A lightweight toolkit for fine-tuning code generation models using the DS-1000 d
 
 ## Features
 
-- 🔄 **DS-1000 Dataset Processing**: Download, preprocess, and prepare the DS-1000 dataset for fine-tuning
-- 📊 **Model Evaluation**: Comprehensive evaluation framework with before/during/after training metrics
-- 🚀 **DeepSeek Integration**: Ready-to-use setup with DeepSeek Coder models
-- 📱 **MLX Support**: Apple Silicon optimized inference with MLX
+- **DS-1000 Dataset Processing**: Download, preprocess, and prepare the DS-1000 dataset for fine-tuning
+- **Model Evaluation**: Comprehensive evaluation framework with before/during/after training metrics
+- **DeepSeek Integration**: Ready-to-use setup with DeepSeek Coder models
+- **MLX Support**: Apple Silicon optimized inference with MLX
 
 ## Quick Start
 
@@ -16,82 +16,102 @@ A lightweight toolkit for fine-tuning code generation models using the DS-1000 d
    pip install -r requirements.txt
    ```
 
-2. **Run the demo**:
+2. **Download and preprocess DS-1000**:
    ```bash
-   python usage_example.py
+   python -m src.dataset
    ```
 
-3. **Download and preprocess DS-1000**:
+3. **Evaluate your model**:
    ```bash
-   python ds1000_processor.py
+   python -m src.evaluation --max_samples 100
    ```
 
-4. **Evaluate your model**:
+4. **Run tests**:
    ```bash
-   python evaluate_with_ds1000.py --max_samples 100
+   python tests/test_suite.py
    ```
 
-## Dataset Processing
+## Project Structure
 
-The `DS1000Processor` class handles:
-- Downloading DS-1000 from Hugging Face or GitHub
-- Creating train/validation/test splits
-- Formatting data for fine-tuning (JSONL/JSON output)
-- Dataset statistics and analysis
+```
+src/
+├── dataset.py          # Dataset processing and preparation
+├── evaluation.py       # Model evaluation framework
+├── training.py         # Fine-tuning functionality
+└── models.py           # Model setup (PyTorch + MLX)
 
-## Model Evaluation
+scripts/
+└── compare.py          # Model comparison utilities
 
-Use the `DS1000Evaluator` for:
-- Baseline evaluation before fine-tuning
-- Custom evaluation on specific test sets
-- Multi-model comparison
-- Tracking improvements during training
+tests/
+├── test_training.py    # Training functionality tests
+└── test_suite.py       # Comprehensive test suite
 
-### Example Usage
+docs/
+├── README.md           # Detailed documentation
+├── finetuning.md       # Fine-tuning guide
+└── testing.md          # Testing documentation
 
+data/                   # Dataset storage
+requirements.txt        # Dependencies
+```
+
+## Usage Examples
+
+### Basic Evaluation
 ```python
-from ds1000_processor import DS1000Processor
-from evaluate_with_ds1000 import DS1000Evaluator
+from src.evaluation import ModelEvaluator
 
-# Process dataset
+evaluator = ModelEvaluator()
+metrics, results = evaluator.run_baseline_evaluation(max_samples=50)
+```
+
+### Dataset Processing
+```python
+from src.dataset import DS1000Processor
+
 processor = DS1000Processor()
 dataset = processor.download_dataset()
 processor.preprocess_for_finetuning(dataset)
+```
 
-# Evaluate model
-evaluator = DS1000Evaluator()
-metrics, results = evaluator.run_baseline_evaluation(max_samples=50)
+### Model Comparison
+```bash
+python scripts/compare.py --base_model deepseek-ai/deepseek-coder-1.3b-instruct --finetuned_model ./finetuned_model
+```
+
+### Fine-tuning
+```bash
+python -m src.training --epochs 3 --batch_size 4 --output_dir ./my_model
 ```
 
 ## Command Line Usage
 
 ```bash
 # Basic evaluation
-python evaluate_with_ds1000.py
+python -m src.evaluation
 
 # Custom model evaluation
-python evaluate_with_ds1000.py --model "your-model-name" --max_samples 100
+python -m src.evaluation --model "your-model-name" --max_samples 100
 
 # Compare multiple models
-python evaluate_with_ds1000.py --mode compare --models model1 model2 model3
+python -m src.evaluation --mode compare --models model1 model2 model3
 
-# Evaluate on custom test file
-python evaluate_with_ds1000.py --mode custom --test_file path/to/test.json
+# Fine-tune a model
+python -m src.training --model deepseek-ai/deepseek-coder-1.3b-instruct --epochs 3
 ```
-
-## File Structure
-
-- `ds1000_processor.py`: Main dataset processing functionality
-- `evaluate_with_ds1000.py`: Model evaluation framework
-- `deepseek_setup.py`: DeepSeek model setup (PyTorch)
-- `deepseek_mlx_setup.py`: DeepSeek model setup (MLX/Apple Silicon)
-- `usage_example.py`: Demo and example usage
 
 ## Output Files
 
-The processor creates:
-- `ds1000_finetuning.jsonl`: Training data in JSONL format
-- `ds1000_train.json`: Training split
-- `ds1000_validation.json`: Validation split  
-- `ds1000_test.json`: Test split
-- `evaluation_results.json`: Evaluation metrics and results
+The toolkit creates:
+- `data/processed/ds1000_finetuning.jsonl`: Training data in JSONL format
+- `data/processed/ds1000_train.json`: Training split
+- `data/processed/ds1000_validation.json`: Validation split  
+- `data/processed/ds1000_test.json`: Test split
+- `data/processed/evaluation_results.json`: Evaluation metrics and results
+
+## Documentation
+
+- [Detailed Usage Guide](docs/README.md)
+- [Fine-tuning Guide](docs/finetuning.md)
+- [Testing Documentation](docs/testing.md) 

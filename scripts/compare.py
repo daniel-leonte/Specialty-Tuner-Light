@@ -2,8 +2,12 @@
 
 import argparse
 import torch
-from deepseek_setup import DeepSeekCoder
-from ds1000_processor import DS1000Processor, DS1000Evaluator
+import sys
+import os
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+
+from src.models import DeepSeekCoder
+from src.dataset import DS1000Processor, DS1000Evaluator
 from transformers import AutoTokenizer, AutoModelForCausalLM
 
 class ModelComparator:
