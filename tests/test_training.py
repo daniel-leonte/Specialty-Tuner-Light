@@ -1,4 +1,18 @@
 #!/usr/bin/env python3
+"""
+Training functionality tests for the fine-tuning pipeline.
+
+This script tests the training components to ensure they work correctly
+without running full training cycles. Tests include:
+- Fine-tuner initialization and setup
+- Training data loading and preparation
+- Dataset tokenization and formatting
+- Training argument configuration
+- Quick training execution with minimal steps
+- Model saving and checkpointing
+
+Use this to validate training setup before running expensive fine-tuning jobs.
+"""
 
 import os
 import sys

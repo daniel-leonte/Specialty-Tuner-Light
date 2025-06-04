@@ -1,11 +1,17 @@
 #!/usr/bin/env python3
 """
-Test Suite for DS-1000 Evaluation System
+Comprehensive test suite for the Specialty-Tuner-Light toolkit.
 
-This script tests all major components:
-1. Dataset processing
-2. Model setup 
-3. Evaluation functionality
+This script validates all major components of the system to ensure proper
+functionality after setup or changes. Tests include:
+- Module imports and dependencies
+- Device detection and hardware compatibility
+- Dataset downloading and processing
+- Model loading and inference
+- Complete evaluation pipeline
+- Output file generation
+
+Run this script to verify system health before using the toolkit.
 """
 
 import os

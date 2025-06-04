@@ -1,4 +1,14 @@
 #!/usr/bin/env python3
+"""
+Model comparison script for evaluating fine-tuning effectiveness.
+
+This script compares the performance of a base model against a fine-tuned version
+on the DS-1000 dataset. It provides detailed metrics and improvement analysis
+to help assess the impact of fine-tuning on code generation quality.
+
+Usage:
+    python scripts/compare.py --base_model MODEL_NAME --finetuned_model PATH
+"""
 
 import argparse
 import torch

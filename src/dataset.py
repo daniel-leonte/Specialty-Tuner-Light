@@ -1,3 +1,11 @@
+"""
+Dataset processing and evaluation for code generation models.
+
+This module handles downloading, preprocessing, and evaluating on the DS-1000 dataset.
+Main classes:
+- DS1000Processor: Downloads and prepares data for training/evaluation
+- DS1000Evaluator: Evaluates model performance on test data
+"""
 import os
 import json
 from datasets import load_dataset

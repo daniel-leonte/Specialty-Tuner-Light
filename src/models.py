@@ -1,3 +1,13 @@
+"""
+Model loading and setup for code generation models.
+
+This module provides unified interfaces for loading DeepSeek Coder models
+with support for both PyTorch and MLX backends. Features include:
+- Automatic device detection and optimization
+- PyTorch implementation for CUDA/CPU
+- MLX implementation for Apple Silicon
+- Factory function for automatic backend selection
+"""
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM
 

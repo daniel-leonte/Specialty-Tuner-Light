@@ -1,4 +1,14 @@
 #!/usr/bin/env python3
+"""
+Model fine-tuning functionality for code generation models.
+
+This module provides tools for fine-tuning pre-trained language models on the
+DS-1000 dataset using the Hugging Face Transformers library. Features include:
+- Automatic data loading and preparation
+- Device-aware training configuration
+- Support for various training parameters
+- Model saving and checkpointing
+"""
 
 import os
 import json

@@ -1,3 +1,13 @@
+"""
+High-level model evaluation framework with command-line interface.
+
+This module provides convenient evaluation tools for testing code generation models
+on the DS-1000 dataset. Features include:
+- Baseline model evaluation
+- Custom test file evaluation
+- Multi-model comparison
+- Device detection and optimization
+"""
 import torch
 import json
 import argparse
